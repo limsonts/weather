@@ -28,8 +28,13 @@ class MyApp extends StatelessWidget {
 
 class WeatherPage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
-  final List<dynamic> cities = ['Mysore', 'Mumbai', 'Munnar', 'Chennai','Trichy',];
-  
+  final List<dynamic> cities = [
+    'Mysore',
+    'Mumbai',
+    'Munnar',
+    'Chennai',
+    'Trichy',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,20 +43,21 @@ class WeatherPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text('Weather App',style: TextStyle(color: Colors.white),),
+          title: Text(
+            'Weather App',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
         body: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('asset/images/bg_blck.jpg'),
-                fit: BoxFit.fill)
-          ),
+              image: DecorationImage(
+                  image: AssetImage('asset/images/bg_blck.jpg'),
+                  fit: BoxFit.fill)),
           child: Padding(
             padding: const EdgeInsets.all(30.0),
             child: Card(
               color: Colors.transparent,
               child: Column(
-                    
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Align(
@@ -67,7 +73,8 @@ class WeatherPage extends StatelessWidget {
                             onPressed: () {
                               final city = _controller.text;
                               if (city.isNotEmpty) {
-                                BlocProvider.of<WeatherBloc>(context).add(FetchWeather(city));
+                                BlocProvider.of<WeatherBloc>(context)
+                                    .add(FetchWeather(city));
                               }
                             },
                           ),
@@ -83,17 +90,21 @@ class WeatherPage extends StatelessWidget {
                         final city = cities[index];
                         return Column(
                           children: [
-                            ListTile(  
-                              title: Text(city,style: TextStyle(color: Colors.white),),
+                            ListTile(
+                              title: Text(
+                                city,
+                                style: TextStyle(color: Colors.white),
+                              ),
                               onTap: () {
-                                BlocProvider.of<WeatherBloc>(context).add(FetchWeather(city));
-                              },                              
+                                BlocProvider.of<WeatherBloc>(context)
+                                    .add(FetchWeather(city));
+                              },
                             ),
                             Divider(
                               color: Colors.white,
                             )
                           ],
-                        );  
+                        );
                       },
                     ),
                   ),
@@ -104,7 +115,8 @@ class WeatherPage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => WeatherDetailScreen(weather: state.weather),
+                            builder: (context) =>
+                                WeatherDetailScreen(weather: state.weather),
                           ),
                         );
                       } else if (state is WeatherError) {
