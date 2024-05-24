@@ -7,6 +7,8 @@ import 'package:weather/model.dart/weather_model.dart';
 class WeatherRepository {
   final String apiKey = 'ba11b26200888a9b43c6b8a068e1dcf3';
 
+  /** API call method for fetching weather Condition */
+
   Future<WeatherResponseModel> fetchWeather(dynamic city) async {
     try{
       WeatherResponseModel weatherResponseModel = WeatherResponseModel();
@@ -15,12 +17,8 @@ class WeatherRepository {
         headers: {
           'Authorization':'Bearer $apiKey'
         });
-
-
-     
     if (response.statusCode == 200) {
        weatherResponseModel = WeatherResponseModel.fromJson(jsonDecode(response.body));
-
       if(weatherResponseModel.list!.isNotEmpty){
       return WeatherResponseModel.fromJson(jsonDecode(response.body));
       }else{

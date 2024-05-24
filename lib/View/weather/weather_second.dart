@@ -19,7 +19,7 @@ class WeatherDetailScreen extends StatelessWidget {
     double maxTemp = maxTemperature - 273.15;
     var humidity = weather.list?[0].main?.humidity;
     var orientation = MediaQuery.of(context).orientation;
-
+   
     return Scaffold(
       body: Container(
         height: screenHeight,
@@ -36,7 +36,7 @@ class WeatherDetailScreen extends StatelessWidget {
       ),
     );
   }
-
+ 
   Widget _buildPortraitLayout(double screenHeight, double screenWidth, double celsius, double minTemp, double maxTemp, var humidity) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -99,7 +99,7 @@ class WeatherDetailScreen extends StatelessWidget {
       ],
     );
   }
-
+   
   Widget _buildLandscapeLayout(double screenHeight, double screenWidth, double celsius, double minTemp, double maxTemp, var humidity) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -152,7 +152,7 @@ class WeatherDetailScreen extends StatelessWidget {
       ],
     );
   }
-
+ /** Developed this widget for landscape mode inoder to show wind humtdity */
   Widget _buildInfoCard(double screenHeight, double screenWidth, double minTemp, double maxTemp, var humidity) {
     return Flexible(
       child: Container(
@@ -294,7 +294,7 @@ class WeatherDetailScreen extends StatelessWidget {
       ),
     );
   }
-
+   /** Developed this widget for displaying wind minimum temprature for potriate mode */
   Widget _buildInfoCardPotriate(double screenHeight, double screenWidth, double minTemp, double maxTemp, var humidity) {
     return Flexible(
       child: Container(
